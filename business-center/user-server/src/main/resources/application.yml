@@ -1,6 +1,3 @@
-
-
-
 #设置最大超时时间
 ribbon:  
   ServerListRefreshInterval: 10  #刷新服务列表源的间隔时间
