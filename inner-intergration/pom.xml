@@ -11,5 +11,10 @@
 
     <artifactId>inner-intergration</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>db-core</module>
+    </modules>
+
+
 
 </project>

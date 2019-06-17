@@ -1,3 +1,16 @@
+# ====================basis.connection====================
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gobe?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+
+
 #设置最大超时时间
 ribbon:  
   ServerListRefreshInterval: 10  #刷新服务列表源的间隔时间

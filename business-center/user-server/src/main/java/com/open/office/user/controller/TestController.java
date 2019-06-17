@@ -1,22 +1,20 @@
 package com.open.office.user.controller;
 
+import com.open.office.user.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TestController {
 
-    @RequestMapping("add")
+
+    @Autowired
+    private IUserService userService;
+
+    @GetMapping("/getUser")
     @ResponseBody
-    public int add(int a, int b){
-        return  a+b;
-    }
-
-
-    @RequestMapping("bbb")
-    public String bbb(){
-        return "redirect:http://192.168.0.109:7000/document.html";
+    public Object getUser(@RequestParam String username) throws Exception{
+        return userService.getUser(username);
     }
 }

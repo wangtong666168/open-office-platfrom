@@ -10,9 +10,7 @@ eureka:
     register-with-eureka: false  #不将网关注册到eureka
   instance:
     prefer-ip-address: true
-zuul:
-#  prefix: /pre  前缀
-  add-host-header: true  # 此处解决zuul定向导致用户浏览的 host 变成 后端服务的 host 问题
-  routes:
-    user-center: /user/**
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 5
+
 
