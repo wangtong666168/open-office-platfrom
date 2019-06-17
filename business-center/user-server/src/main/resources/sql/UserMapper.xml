@@ -6,7 +6,7 @@
 	<select id="selectUserCount" resultType="java.lang.Integer">
 		SELECT
 			count(*)
-		from  xjt_user
+		from  xjt_users
 	</select>
 
 </mapper>

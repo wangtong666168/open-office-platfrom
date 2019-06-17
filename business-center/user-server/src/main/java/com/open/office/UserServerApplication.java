@@ -1,4 +1,4 @@
-package com.open.office.user;
+package com.open.office;
 
 
 import org.springframework.boot.SpringApplication;
