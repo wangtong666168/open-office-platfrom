@@ -5,6 +5,6 @@ import com.open.office.user.mybatis.pojo.User;
 import java.util.List;
 
 public interface IUserService {
-    Integer getUser(String username) throws Exception;
+    Integer getUser() throws Exception;
 
 }

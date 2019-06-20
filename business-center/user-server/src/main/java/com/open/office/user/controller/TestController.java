@@ -14,7 +14,7 @@ public class TestController {
 
     @GetMapping("/getUser")
     @ResponseBody
-    public Object getUser(@RequestParam String username) throws Exception{
-        return userService.getUser(username);
+    public Object getUser() throws Exception{
+        return userService.getUser();
     }
 }

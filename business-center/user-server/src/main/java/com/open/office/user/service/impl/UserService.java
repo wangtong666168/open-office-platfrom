@@ -20,7 +20,7 @@ public class UserService implements IUserService{
 
 	@Override
 //	@HystrixCommand(fallbackMethod="defaultUser")
-	public Integer getUser(String username) throws Exception {
+	public Integer getUser() throws Exception {
 		int count = rmsUserMapper.selectUserCount();
 		return count;
 	}

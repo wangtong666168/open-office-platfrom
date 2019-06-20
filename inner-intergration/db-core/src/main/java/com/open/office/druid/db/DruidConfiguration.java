@@ -1,13 +1,21 @@
 package com.open.office.druid.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
+import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-@Configurable
+
+@Configuration
 public class DruidConfiguration {
 
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -15,4 +23,46 @@ public class DruidConfiguration {
     public DataSource druid() {
         return new DruidDataSource();
     }
+
+
+    /**
+     * 注入servlet
+     * @return
+     */
+    @Bean
+    public ServletRegistrationBean druidServlet() {
+        return new ServletRegistrationBean(new StatViewServlet(), "/system/druid/*");
+    }
+
+    /**
+     * 站点的URL进行统计的 添加WebStatFilter过滤器
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new WebStatFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/system/druid/*");
+        return filterRegistrationBean;
+    }
+
+    /**
+     * Druid Spring 监控拦截器
+     * @return
+     */
+    @Bean(name = "druidStatInterceptor")
+    public DruidStatInterceptor druidStatInterceptor() {
+        return new DruidStatInterceptor();
+    }
+
+    @Bean
+    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
+        BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
+        creator.setProxyTargetClass(true);
+        creator.setBeanNames("*Service","*ServiceImpl");
+        creator.setInterceptorNames("druidStatInterceptor");
+        return creator;
+    }
+
 }
