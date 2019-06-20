@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Configuration
@@ -31,7 +33,17 @@ public class DruidConfiguration {
      */
     @Bean
     public ServletRegistrationBean druidServlet() {
-        return new ServletRegistrationBean(new StatViewServlet(), "/system/druid/*");
+        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/system/druid/*");
+
+//        Map<String,String> initParams = new HashMap<>();
+//        initParams.put("loginUsername","admin");
+//        initParams.put("loginPassword","123456");
+//        initParams.put("allow","");//默认就是允许所有访问
+//        initParams.put("deny","192.168.15.21");
+//
+//        bean.setInitParameters(initParams);
+
+        return bean;
     }
 
     /**
@@ -47,22 +59,6 @@ public class DruidConfiguration {
         return filterRegistrationBean;
     }
 
-    /**
-     * Druid Spring 监控拦截器
-     * @return
-     */
-    @Bean(name = "druidStatInterceptor")
-    public DruidStatInterceptor druidStatInterceptor() {
-        return new DruidStatInterceptor();
-    }
 
-    @Bean
-    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
-        BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
-        creator.setProxyTargetClass(true);
-        creator.setBeanNames("*Service","*ServiceImpl");
-        creator.setInterceptorNames("druidStatInterceptor");
-        return creator;
-    }
 
 }

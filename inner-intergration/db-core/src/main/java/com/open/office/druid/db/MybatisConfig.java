@@ -21,6 +21,8 @@ public class MybatisConfig {
     private DataSource dataSource;
 
 
+    // 将数据源纳入spring事物管理
+    @Bean
     public DataSourceTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
