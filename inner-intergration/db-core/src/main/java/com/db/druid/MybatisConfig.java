@@ -1,4 +1,4 @@
-package com.open.office.druid.db;
+package com.db.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -21,6 +21,7 @@ public class MybatisConfig {
     private DataSource dataSource;
 
 
+    @Bean
     public DataSourceTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

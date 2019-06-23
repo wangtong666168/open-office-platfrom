@@ -1,4 +1,4 @@
-package com.open.office.druid.db;
+package com.db.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
@@ -31,7 +31,7 @@ public class DruidConfiguration {
      */
     @Bean
     public ServletRegistrationBean druidServlet() {
-        return new ServletRegistrationBean(new StatViewServlet(), "/system/druid/*");
+        return new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
     }
 
     /**
@@ -43,26 +43,10 @@ public class DruidConfiguration {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(new WebStatFilter());
         filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/system/druid/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
     }
 
-    /**
-     * Druid Spring 监控拦截器
-     * @return
-     */
-    @Bean(name = "druidStatInterceptor")
-    public DruidStatInterceptor druidStatInterceptor() {
-        return new DruidStatInterceptor();
-    }
 
-    @Bean
-    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
-        BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
-        creator.setProxyTargetClass(true);
-        creator.setBeanNames("*Service","*ServiceImpl");
-        creator.setInterceptorNames("druidStatInterceptor");
-        return creator;
-    }
 
 }

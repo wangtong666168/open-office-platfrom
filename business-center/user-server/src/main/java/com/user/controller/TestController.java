@@ -1,6 +1,6 @@
-package com.open.office.user.controller;
+package com.user.controller;
 
-import com.open.office.user.service.IUserService;
+import com.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
