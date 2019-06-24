@@ -1,4 +1,4 @@
-package com.open.office.druid.db;
+package com.open.office.db.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
