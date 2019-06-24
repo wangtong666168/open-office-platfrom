@@ -1,4 +1,4 @@
-package com.open.office;
+package com;
 
 
 import org.springframework.boot.SpringApplication;

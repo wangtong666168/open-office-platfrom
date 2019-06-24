@@ -79,6 +79,7 @@
         <!--网关-->
         <module>api-gateway</module>
         <module>business-center</module>
+        <module>config-center</module>
 
     </modules>
 

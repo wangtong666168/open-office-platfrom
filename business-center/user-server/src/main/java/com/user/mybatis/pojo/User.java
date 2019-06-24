@@ -1,4 +1,4 @@
-package com.open.office.user.mybatis.pojo;
+package com.user.mybatis.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

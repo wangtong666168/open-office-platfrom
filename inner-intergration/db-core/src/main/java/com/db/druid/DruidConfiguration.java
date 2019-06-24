@@ -59,6 +59,22 @@ public class DruidConfiguration {
         return filterRegistrationBean;
     }
 
+    /**
+     * Druid Spring 监控拦截器
+     * @return
+     */
+    @Bean(name = "druidStatInterceptor")
+    public DruidStatInterceptor druidStatInterceptor() {
+        return new DruidStatInterceptor();
+    }
 
+    @Bean
+    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
+        BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
+        creator.setProxyTargetClass(true);
+        creator.setBeanNames("*Service","*ServiceImpl");
+        creator.setInterceptorNames("druidStatInterceptor");
+        return creator;
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.open.office.eureka;
+package com.eureka;
 
 
 import org.springframework.boot.SpringApplication;
