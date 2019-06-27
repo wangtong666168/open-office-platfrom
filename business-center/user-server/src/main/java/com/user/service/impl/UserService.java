@@ -5,18 +5,20 @@ import com.user.mybatis.mapper.UserMapper;
 import com.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  */
-@Component
+@Service
 public class UserService implements IUserService{
 
-	private UserMapper rmsUserMapper;
+	@Autowired
+	private UserMapper userMapper;
 
 	@Override
 //	@HystrixCommand(fallbackMethod="defaultUser")
 	public Integer getUser() throws Exception {
-		int count = rmsUserMapper.selectUserCount();
+		int count = userMapper.selectUserCount();
 		return count;
 	}
 

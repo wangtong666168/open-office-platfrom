@@ -80,6 +80,7 @@
         <module>api-gateway</module>
         <module>business-center</module>
         <module>config-center</module>
+        <module>oauth-center</module>
 
     </modules>
 
