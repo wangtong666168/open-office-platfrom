@@ -22,9 +22,19 @@ public class ZuulServerApplication extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-                http
-                .authorizeRequests().antMatchers("/login", "/user/**").permitAll() //请求路径""允许访问
-                .and().authorizeRequests().anyRequest().authenticated()    //其它请求都需要校验才能访问
-                .and().csrf().disable(); // 禁用csrf
+//                http
+//                .authorizeRequests().antMatchers("/login", "/uaa/**").permitAll() //请求路径""允许访问
+//                .and().authorizeRequests().anyRequest().authenticated()    //其它请求都需要校验才能访问
+//                .and().csrf().disable(); // 禁用csrf
+
+		http
+				.authorizeRequests()
+				.antMatchers("/login", "/uaa/**")
+				.permitAll()
+				.anyRequest()
+				.authenticated()
+				.and()
+				.csrf()
+				.disable();
     }
 }

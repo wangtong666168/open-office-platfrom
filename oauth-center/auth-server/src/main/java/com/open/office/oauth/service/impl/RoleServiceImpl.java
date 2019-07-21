@@ -23,10 +23,10 @@ public class RoleServiceImpl implements RoleService {
     private SysRoleMapper roleMapper;
 
     @Override
-    public Result<List<SysRole>> getRoleByUserId(Integer userId) {
+    public List<SysRole> getRoleByUserId(Integer userId) {
 
         List<SysRole> roleList = roleMapper.getRoleByUserId(userId);
-        return Result.ok().setData(roleList);
+        return roleList;
 
     }
 }

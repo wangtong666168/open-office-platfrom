@@ -25,7 +25,9 @@ zuul:
 #  prefix: /pre  前缀
   add-host-header: true  # 此处解决zuul重定向导致用户浏览的 host 变成 后端服务的 host 问题
   routes:
-    user-center: /user/**
+#    user-center: /user/**
+    uaa:
+      sensitiveHeaders:
 #  ratelimit:
 #      key-prefix: springcloud-book #按粒度拆分的临时变量key前缀
 #      enabled: true #启用开关
@@ -39,3 +41,9 @@ zuul:
 #          - user #可指定用户粒度
 #          - origin #可指定客户端地址粒度
 #          - url #可指定url粒度
+logging:
+  config: classpath:logback.xml
+  level:
+    org:
+      springframework:
+        web: debug

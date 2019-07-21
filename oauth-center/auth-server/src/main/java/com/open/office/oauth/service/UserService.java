@@ -11,5 +11,5 @@ import com.open.office.oauth.entity.SysUser;
  * Time: 9:48
  */
 public interface UserService {
-    Result<SysUser> findByUsername(String username);
+	SysUser findByUsername(String username);
 }

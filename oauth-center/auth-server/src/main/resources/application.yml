@@ -1,10 +1,10 @@
 server:
   port: 7777
-  servlet:
-    contextPath: /uaa #web基路径
+#  servlet:
+#    contextPath: /uaa #web基路径
 spring:
   application:
-    name: auth-server
+    name: uaa
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource
       url: jdbc:mysql://localhost:3306/zuul-auth?useUnicode=true&characterEncoding=utf8
@@ -30,16 +30,18 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: 123456
+    password: 123456abc
 eureka:
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:1111/eureka
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+#    lease-renewal-interval-in-seconds: 5
 logging:
   config: classpath:logback.xml
   level:
     org:
       springframework:
-        web: info
+        web: debug

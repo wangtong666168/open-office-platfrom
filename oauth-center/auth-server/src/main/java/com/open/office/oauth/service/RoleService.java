@@ -13,5 +13,5 @@ import java.util.List;
  * Time: 20:26
  */
 public interface RoleService {
-    Result<List<SysRole>> getRoleByUserId(Integer userId);
+	List<SysRole> getRoleByUserId(Integer userId);
 }

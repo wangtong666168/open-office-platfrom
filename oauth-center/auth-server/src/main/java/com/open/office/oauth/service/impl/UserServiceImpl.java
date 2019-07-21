@@ -7,14 +7,8 @@ import com.open.office.oauth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.util.Sqls;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- * User: Mr.Yangxiufeng
- * Date: 2018-05-10
- * Time: 19:57
- */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,12 +16,7 @@ public class UserServiceImpl implements UserService {
     private SysUserMapper userMapper;
 
     @Override
-    public Result<SysUser>  findByUsername(String username) {
-//        SysUser user = userService.findByUsername(username);
-//        if (user == null){
-//            return Result.failure(100,"用户不存在");
-//        }
-        SysUser user = new SysUser();
-        return Result.ok().setData(user);
+    public SysUser findByUsername(String username) {
+		return userMapper.getSysUserByUserName(username);
     }
 }
