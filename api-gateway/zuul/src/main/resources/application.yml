@@ -25,7 +25,7 @@ zuul:
 #  prefix: /pre  前缀
   add-host-header: true  # 此处解决zuul重定向导致用户浏览的 host 变成 后端服务的 host 问题
   routes:
-#    user-center: /user/**
+    user-center: /user/**
     uaa:
       sensitiveHeaders:
 #  ratelimit:

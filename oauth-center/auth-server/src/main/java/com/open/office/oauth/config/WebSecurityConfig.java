@@ -42,15 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .passwordEncoder(passwordEncoder());
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .anyRequest().permitAll()
-//                .antMatchers("/","/login","/oauth/token","/oauth/authorize").permitAll()
-//                .and()
-//                .csrf().disable();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().permitAll()
+                .antMatchers("/","/login","/oauth/token","/oauth/authorize").permitAll()
+                .and()
+                .csrf().disable();
+    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {

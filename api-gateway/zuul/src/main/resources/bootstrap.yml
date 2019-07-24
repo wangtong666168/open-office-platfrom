@@ -14,8 +14,6 @@ eureka:
     lease-renewal-interval-in-seconds: 5
 
 security:
-  basic:
-    enabled: false
   oauth2:
     client:
       access-token-uri: http://localhost:7777/oauth/token #令牌端点
