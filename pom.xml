@@ -4,21 +4,75 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.open.office</groupId>
-    <artifactId>open-office-platfrom</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.open.gather</groupId>
+    <artifactId>gather-platfrom</artifactId>
+    <version>1.0.0</version>
 
     <packaging>pom</packaging>
 
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <log4j2.version>2.1</log4j2.version>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.0.8.RELEASE</spring-boot.version>
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
-        <tk.mybatis.starter.version>2.0.4</tk.mybatis.starter.version>
-        <spring-security-oauth.version>2.3.3.RELEASE</spring-security-oauth.version>
+        <sharding-jdbc>2.0.3</sharding-jdbc>
+        <hutool.version>4.1.13</hutool.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
+        <swagger.version>2.9.2</swagger.version>
+        <core.version>1.0.1</core.version>
+        <disruptor.version>3.4.1</disruptor.version>
+        <swagger.m.version>1.0.6</swagger.m.version>
+        <spring-platform.version>Cairo-SR3</spring-platform.version>
+        <spring-security.version>5.1.1.RELEASE</spring-security.version>
+        <security-oauth2.version>2.3.4.RELEASE</security-oauth2.version>
+        <hibernate-validator.verion>5.0.2.Final</hibernate-validator.verion>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <jasypt.version>1.14</jasypt.version>
+        <txlcn.version>5.0.2.RELEASE</txlcn.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
     </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Micrometer Prometheus registry -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
 
 
     <dependencyManagement>
@@ -31,16 +85,41 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${security-oauth2.version}</version>
+            </dependency>
+      <!--      <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tm</artifactId>
+                <version>${txlcn.version}</version>
+            </dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.codingapi.txlcn</groupId>-->
+                <!--<artifactId>txlcn-tc</artifactId>-->
+                <!--<version>${txlcn.version}</version>-->
+            <!--</dependency>-->
+   <!--         <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-txmsg-netty</artifactId>
+                <version>${txlcn.version}</version>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
-
-
 
 
     <build>
@@ -69,22 +148,50 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                    <include>**/*.p12</include>
+                    <include>**/*.conf</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.wsdl</include>
+                    <include>**/*.xsd</include>
+                    <include>**/*.ftl</include>
+                    <include>processes/*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/view</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
 
+            <resource>
+                <directory>src/main/proto</directory>
+                <includes>
+                    <include>**/*.proto</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
-
-
-    <modules>
-        <!-- 内部支撑工具 -->
-        <module>inner-intergration</module>
-        <!--注册中心-->
-        <module>register-center</module>
-        <!--网关-->
-        <module>api-gateway</module>
-        <module>business-center</module>
-        <module>config-center</module>
-        <module>oauth-center</module>
-
-    </modules>
 
 
 </project>
