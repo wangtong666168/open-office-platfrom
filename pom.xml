@@ -7,6 +7,10 @@
     <groupId>com.open.gather</groupId>
     <artifactId>gather-platfrom</artifactId>
     <version>1.0.0</version>
+    <modules>
+        <module>gather-base</module>
+        <module>eureka-server</module>
+    </modules>
 
     <packaging>pom</packaging>
 

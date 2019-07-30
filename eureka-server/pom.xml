@@ -15,11 +15,11 @@
 
 
         <!-- 日志统一配置 -->
-        <dependency>
+      <!--  <dependency>
             <groupId>com.open.capacity</groupId>
             <artifactId>log-core</artifactId>
             <version>${core.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- hystrix
         <dependency>
             <groupId>org.springframework.cloud</groupId>
