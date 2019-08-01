@@ -10,6 +10,7 @@
     <modules>
         <module>gather-base</module>
         <module>eureka-server</module>
+        <module>gather-common</module>
     </modules>
 
     <packaging>pom</packaging>
