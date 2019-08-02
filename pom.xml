@@ -27,7 +27,7 @@
         <sharding-jdbc>2.0.3</sharding-jdbc>
         <hutool.version>4.1.13</hutool.version>
         <swagger.version>2.9.2</swagger.version>
-        <core.version>1.0.1</core.version>
+        <core.version>1.0.0</core.version>
         <disruptor.version>3.4.1</disruptor.version>
         <swagger.m.version>1.0.6</swagger.m.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>

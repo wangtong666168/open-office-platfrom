@@ -14,10 +14,9 @@
 
 
     <dependencies>
-        <!-- 关系型和非关系型数据库配置 spring oauth db redis支持 -->
         <dependency>
-            <groupId>com.open.capacity</groupId>
-            <artifactId>db-core</artifactId>
+            <groupId>com.open.gather</groupId>
+            <artifactId>gather-common-db</artifactId>
             <version>${core.version}</version>
         </dependency>
         <dependency>

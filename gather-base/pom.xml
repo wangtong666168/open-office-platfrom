@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>auth-server</module>
+        <module>gateway-server</module>
     </modules>
     <artifactId>gather-base</artifactId>
 
