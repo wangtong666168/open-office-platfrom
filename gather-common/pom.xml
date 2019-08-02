@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>gather-common-db</module>
+        <module>gather-common-core</module>
+        <module>gather-common-redis</module>
     </modules>
     <artifactId>gather-common</artifactId>
 

@@ -21,11 +21,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <redisson.version>3.10.7</redisson.version>
         <log4j2.version>2.1</log4j2.version>
         <java.version>1.8</java.version>
         <sharding-jdbc>2.0.3</sharding-jdbc>
         <hutool.version>4.1.13</hutool.version>
-        <kaptcha.version>0.0.9</kaptcha.version>
         <swagger.version>2.9.2</swagger.version>
         <core.version>1.0.1</core.version>
         <disruptor.version>3.4.1</disruptor.version>
