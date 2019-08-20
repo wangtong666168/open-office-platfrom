@@ -13,6 +13,7 @@
         <module>gather-common-db</module>
         <module>gather-common-core</module>
         <module>gather-common-redis</module>
+        <module>gather-common-security</module>
     </modules>
     <artifactId>gather-common</artifactId>
 

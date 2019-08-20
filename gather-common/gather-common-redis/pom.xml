@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gather-common-redis</artifactId>
+    <artifactId>common-redis</artifactId>
 
 
 

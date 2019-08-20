@@ -9,24 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gather-common-core</artifactId>
+    <artifactId>common-core</artifactId>
+
 
 
 
     <dependencies>
-        <!-- 关系型和非关系型数据库配置 spring oauth db redis支持 -->
         <dependency>
-            <groupId>com.open.capacity</groupId>
-            <artifactId>db-core</artifactId>
+            <groupId>com.open.gather</groupId>
+            <artifactId>common-db</artifactId>
             <version>${core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,6 +28,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -44,7 +45,7 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <!--hutool -->
+        <!--hutool工具包 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -66,7 +67,6 @@
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-base</artifactId>
             <version>4.0.0</version>
-            <!--add by owen �ų��������swagger�������� -->
             <exclusions>
                 <exclusion>
                     <groupId>com.google.guava</groupId>

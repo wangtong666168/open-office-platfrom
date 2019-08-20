@@ -24,19 +24,17 @@
         <redisson.version>3.10.7</redisson.version>
         <log4j2.version>2.1</log4j2.version>
         <java.version>1.8</java.version>
-        <sharding-jdbc>2.0.3</sharding-jdbc>
         <hutool.version>4.1.13</hutool.version>
         <swagger.version>2.9.2</swagger.version>
-        <core.version>1.0.1</core.version>
+        <core.version>1.0.0</core.version>
         <disruptor.version>3.4.1</disruptor.version>
         <swagger.m.version>1.0.6</swagger.m.version>
         <spring-platform.version>Cairo-SR3</spring-platform.version>
         <spring-security.version>5.1.1.RELEASE</spring-security.version>
-        <security-oauth2.version>2.3.4.RELEASE</security-oauth2.version>
+        <security-oauth2.version>2.3.3.RELEASE</security-oauth2.version>
         <hibernate-validator.verion>5.0.2.Final</hibernate-validator.verion>
         <commons-collections4.version>4.1</commons-collections4.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <jasypt.version>1.14</jasypt.version>
         <txlcn.version>5.0.2.RELEASE</txlcn.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
@@ -63,6 +61,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
 
         <!-- Micrometer Prometheus registry -->
         <dependency>
