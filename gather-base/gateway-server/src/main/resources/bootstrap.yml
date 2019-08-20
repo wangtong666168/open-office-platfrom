@@ -1,0 +1,88 @@
+#端口
+server:
+  port: 9000
+
+#服务名称
+spring:
+  application:
+    name: gateway-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always   
+
+#eureka client 配置          
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:  http://127.0.0.1:1111/eureka
+    registry-fetch-interval-seconds: 10  
+    instance-info-replication-interval-seconds: 10  
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 5  #每隔几秒告诉eureka服务器我还存活，用于心跳检测
+    lease-expiration-duration-in-seconds: 10 #如果心跳检测一直没有发送，10秒后会从eureka服务器中将此服务剔除
+    #注册实例文档
+    status-page-url:  http://${spring.cloud.client.ip-address}:${server.port}/doc.html
+
+
+#设置最大容错超时时间
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 90000
+
+#设置最大超时时间
+ribbon:
+  eager-load:
+    enabled: true #饥饿加载
+  ServerListRefreshInterval: 10  #刷新服务列表源的间隔时间
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  ReadTimeout: 30000 #请求处理的超时时间
+  ConnectTimeout: 30000 #请求连接的超时时间
+  OkToRetryOnAllOperations: true #对所有操作请求都进行重试
+  MaxAutoRetries: 1 #对当前实例的重试次数
+  MaxAutoRetriesNextServer: 1 #切换实例的重试次数 （要重试的下一个服务的最大数量（不包括第一个服务）
+
+
+zuul:
+  ssl-hostname-validation-enabled: false
+  add-host-header: true # 标识以确定代理是否转发主机头。
+  sensitive-headers: #/oauth/token需要请求头处理
+  retryable: false    #关闭重试
+  routes:
+    client-a:
+      path: /client/**
+      serviceId: client-a
+  ratelimit:
+      key-prefix: springcloud-tong #按粒度拆分的临时变量key前缀
+      enabled: true #启用开关
+      repository: REDIS #key存储类型，默认是IN_MEMORY本地内存，此外还有多种形式
+#      behind-proxy:  #表示代理之后
+      policy-list:
+        user:
+          - limit: 10  # 限制次数
+            refresh-interval: 60 # 刷新时间
+            type:
+              - origin #限流方式
+        auth:
+          - limit: 10
+            refresh-interval: 60
+            type:
+              - origin
+        file:
+          - limit: 10
+            refresh-interval: 60
+            type:
+              - origin
+        log:
+          - limit: 10
+            refresh-interval: 60
+            type:
+              - origin
